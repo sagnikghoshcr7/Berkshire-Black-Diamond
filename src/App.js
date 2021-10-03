@@ -1,55 +1,62 @@
-import React, { useEffect } from "react"
-import { Route, Switch } from "react-router-dom"
-import { Helmet } from "react-helmet"
-import AOS from "aos"
+import React, { useEffect, lazy, Suspense } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import "bootstrap/dist/css/bootstrap.min.css"
-import "aos/dist/aos.css"
-import "./css/App.css"
+import Header from './components/header/header.component';
+import Spinner from './components/spinner/spinner.component';
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
-import Navbar from "./components/Navbar"
-import Home from "./pages/Home"
-import Education from "./pages/Education"
-import Experience from "./pages/Experience"
-import Skills from "./pages/Skills"
-import Contact from "./pages/Contact"
-import Projects from "./pages/Projects"
-import Achievements from "./pages/Achievements"
+import { GlobalStyle } from './global.styles';
 
+import { selectCurrentUser } from './redux/user/user.selectors';
+import { checkUserSession } from './redux/user/user.actions';
 
-function App() {
+const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
+const ShopPage = lazy(() => import('./pages/shop/shop.component'));
+const SignInAndSignUpPage = lazy(() =>
+  import('./pages/sign-in-and-sign-up/sign-in-and-sign-up.component')
+);
+const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'));
+
+const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
-    AOS.init()
-  }, [])
+    checkUserSession();
+  }, [checkUserSession]);
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <Helmet>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          ></meta>
-          <meta
-            name="description"
-            content="Sagnik Ghosh - Fullstack Developer."
-          />
-          <meta name="author" content="Sagnik Ghosh" />
-          <title>Sagnik Ghosh - Portfolio</title>
-        </Helmet>
-        <div id="wrapper">
-          <Navbar />
-          <Home />
-          <Education />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Achievements />
-          <Contact />
-        </div>
-      </Route>
-    </Switch>
-  )
-}
+    <div>
+      <GlobalStyle />
+      <Header />
+      <Switch>
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path='/' component={HomePage} />
+            <Route path='/shop' component={ShopPage} />
+            <Route exact path='/checkout' component={CheckoutPage} />
+            <Route
+              exact
+              path='/signin'
+              render={() =>
+                currentUser ? <Redirect to='/' /> : <SignInAndSignUpPage />
+              }
+            />
+          </Suspense>
+        </ErrorBoundary>
+      </Switch>
+    </div>
+  );
+};
 
-export default App
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
