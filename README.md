@@ -1,4 +1,5 @@
 # CodeSignal-Practice_Solutions
+![GitHub forks](https://img.shields.io/github/forks/sagnikghoshcr7/CodeSignal-Practice_Solutions?style=social)
 
 <a href="https://hacktoberfest.digitalocean.com/">
   <img src="https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg" />
