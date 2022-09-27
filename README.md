@@ -1,4 +1,4 @@
-# CodeSignal-Practice_Solutions
+# Berkshire Black Diamond Project
 
 
 <a href="https://github.com/sagnikghoshcr7/CodeSignal-Practice_Solutions/network/members">
