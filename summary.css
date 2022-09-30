@@ -1,0 +1,12 @@
+.summary-table {
+  margin-left: 50px;
+  border: 3px solid blue;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.summary-box {
+  max-width: 1200px;
+  margin: 0 auto;
+}
