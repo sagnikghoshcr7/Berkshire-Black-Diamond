@@ -1,0 +1,25 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.btn-buy {
+  border: none;
+  background-color: green;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 2rem;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btn-sell {
+  border: none;
+  background-color: red;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 2rem;
+  margin: 5px;
+  cursor: pointer;
+}
