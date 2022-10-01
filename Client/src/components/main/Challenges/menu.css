@@ -1,0 +1,25 @@
+.menu-industries {
+  list-style: none;
+  margin: 20px 10px;
+  border: 3px solid blue;
+  border-radius: 5px;
+  padding: 0;
+  align-self: start;
+}
+
+.menu-li {
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+}
+
+.menu-li-selected {
+  background: blue;
+  color: white;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+}
+
+.menu-li:hover {
+  background: blue;
+  color: white;
+}
