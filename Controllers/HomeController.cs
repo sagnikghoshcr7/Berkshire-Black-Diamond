@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+// Home controller for MVC architecture
+
 namespace GenAPI.Controllers
 {
     public class HomeController : Controller
