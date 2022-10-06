@@ -87,7 +87,7 @@ namespace GenAPI.Controllers
             return CreatedAtRoute("DefaultApi", new { id = employee.Id }, employee);
         }
 
-        // DELETE: api/Employees/5
+        // USED DELETE: api/Employees/5
         [ResponseType(typeof(Employee))]
         public IHttpActionResult DeleteEmployee(int id)
         {
