@@ -25,3 +25,4 @@ namespace GenAPI.Models
         public int Id { get; set; }
     }
 }
+
