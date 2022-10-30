@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component should render FormInput component 1`] = `ShallowWrapper {}`;
+
+exports[`Footer component should render Footer component 1`] = `ShallowWrapper {}`;
